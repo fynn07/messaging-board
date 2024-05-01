@@ -6,7 +6,7 @@ import logo from './assets/send-button.png'
 function App() {
   const scrollRef = useRef(null);
   const [note, setNote] = useState("");
-  const [userName, setUser] = useState("");
+  const [userName, setUser] = useState("anonymous");
   const [notes, setNotes] = useState([]);
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
