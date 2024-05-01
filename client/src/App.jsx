@@ -1,10 +1,10 @@
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect, useReducer, useRef } from 'react'
 import logo from './assets/send-button.png'
 
 //add a profile picture functionality
 
 function App() {
-
+  const scrollRef = useRef(null);
   const [note, setNote] = useState("");
   const [userName, setUser] = useState("");
   const [notes, setNotes] = useState([]);
@@ -59,6 +59,10 @@ function App() {
     getNotes();
   }, [reducerValue])
 
+  useEffect(() => {
+    scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [notes])
+  
   return (
     <>
     <div className='flex flex-col h-screen bg-blue-500 overflow-hidden'>
@@ -82,7 +86,7 @@ function App() {
               <p className='ml-2 text-gray-500 text-xs'>{note.date}</p>
             </div>
             )}
-
+            <div ref={scrollRef} className='bg-black'/>
           </div>
         </div>
         <form onSubmit={addNote} className='rounded-b-xl pt-6 border-t-2 h-20 shadow-md flex px-12 bg-white items-center'>
