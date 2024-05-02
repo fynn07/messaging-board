@@ -8,11 +8,15 @@ const NotesLog = (props) => {
   //DEV : http://localhost:3200/chat
   //PROD : https://messaging-board-backend.vercel.app/chat
 
-  const getNotes = async e => {
+  const getNotes = async () => {
     try {
       const request = await fetch("https://messaging-board-backend.vercel.app/chat");
       const jsonData = await request.json();
-      setNotes(jsonData);
+  
+      if (JSON.stringify(jsonData) !== JSON.stringify(notes)) {
+        setNotes(jsonData);
+      }
+      
       setLoading(false);
     } catch (error) {
       console.error(error);  
@@ -26,6 +30,14 @@ const NotesLog = (props) => {
   useEffect(() => {
     scrollRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [notes])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getNotes();
+    }, 3000);
+  
+    return () => clearInterval(interval); 
+  }, []); 
 
   if(loading === true){
     return (
