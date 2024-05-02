@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, useReducer} from "react";
 const NotesLog = (props) => {
   const scrollRef = useRef(null);
   const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   //DEV : http://localhost:3200/chat
   //PROD : https://messaging-board-backend.vercel.app/chat
@@ -12,6 +13,7 @@ const NotesLog = (props) => {
       const request = await fetch("https://messaging-board-backend.vercel.app/chat");
       const jsonData = await request.json();
       setNotes(jsonData);
+      setLoading(false);
     } catch (error) {
       console.error(error);  
     }
@@ -24,6 +26,23 @@ const NotesLog = (props) => {
   useEffect(() => {
     scrollRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [notes])
+
+  if(loading === true){
+    return (
+        <>
+        <div className='h-full px-8 py-6 overflow-hidden flex flex-col gap-6 bg-gray-100'>
+          <div className='flex flex-col gap-6 h-screen overflow-y-scroll overflow-x-hidden'>
+
+            <div className="flex justify-center items-center h-full">
+                <div className="w-10 h-10 border-4 border-t-blue-500 border-transparent rounded-full animate-spin"/>
+            </div>
+          </div>
+        </div>
+        <div ref={scrollRef} />
+        </>
+    )
+  }
+  else{
     return (
         <>
         <div className='h-full px-8 py-6 overflow-hidden flex flex-col gap-6 bg-gray-100'>
@@ -43,6 +62,8 @@ const NotesLog = (props) => {
         </div>
         </>
     )
+
+  }
 }
 
 export default NotesLog;
