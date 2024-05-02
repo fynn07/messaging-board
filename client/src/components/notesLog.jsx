@@ -6,7 +6,7 @@ const NotesLog = (props) => {
 
   const getNotes = async e => {
     try {
-      const request = await fetch("http://localhost:3200/chat");
+      const request = await fetch("https://messaging-board-backend.vercel.app/chat");
       const jsonData = await request.json();
       setNotes(jsonData);
     } catch (error) {
