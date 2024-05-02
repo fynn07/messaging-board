@@ -15,6 +15,9 @@ const NotesPost = (props) => {
   
     return formattedDate;
   }
+  
+  //DEV : http://localhost:3200/chat
+  //PROD : https://messaging-board-backend.vercel.app/chat
 
   const addNote = async e => {
     e.preventDefault();

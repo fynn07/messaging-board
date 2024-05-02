@@ -4,6 +4,9 @@ const NotesLog = (props) => {
   const scrollRef = useRef(null);
   const [notes, setNotes] = useState([]);
 
+  //DEV : http://localhost:3200/chat
+  //PROD : https://messaging-board-backend.vercel.app/chat
+
   const getNotes = async e => {
     try {
       const request = await fetch("https://messaging-board-backend.vercel.app/chat");

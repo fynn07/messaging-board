@@ -17,7 +17,7 @@ function App() {
       <div className='mt-8'>
         <h1 className='text-center text-3xl text-white border-black font-poppins font-semibold'>MESSAGING BOARD</h1>
       </div>       
-      <div className=' border-black flex flex-col mt-6 flex-1 mx-96 rounded-xl min-w-96 overflow-hidden grow shadow-2xl'>
+      <div className='border-black flex flex-col mt-6 flex-1 m-auto rounded-xl overflow-y-hidden grow shadow-2xl max-w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl'>
 
         <NotesConfig username = {userName} setUser = {setUser}/>
         <NotesLog reducer_value = {reducerValue}/>
