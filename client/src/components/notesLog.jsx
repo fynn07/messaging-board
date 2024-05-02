@@ -28,7 +28,7 @@ const NotesLog = (props) => {
 
             {notes.map(note => 
             <div className='justify-between' key={note.id}> 
-              <p className='ml-4'>{note.username}</p>
+              <p className='ml-2'>{note.username}</p>
               <div className='bg-blue-700 p-4 text-white inline-block rounded-lg'>
                 <p>{note.message}</p>
               </div>
