@@ -1,4 +1,3 @@
-
 const NotesConfig = (props) => {
     return (
         <>

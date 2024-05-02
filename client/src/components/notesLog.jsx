@@ -14,7 +14,6 @@ const NotesLog = (props) => {
     }
   }
 
-
   useEffect(() => {
     getNotes();
   }, [props.reducer_value])
