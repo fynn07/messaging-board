@@ -8,13 +8,8 @@ const opts = {
   const rateLimiter = new RateLimiterMemory(opts);
 
   function rateLimiterMiddleware(req, res, next){
-    rateLimiter.consume(req.ip, 1)
-        .then((rateLimiterRes) => {
-            next();
-        })
-        .catch((rateLimiterRes) => {
-            next();
-        });
+    console.log(req.ip)
+    next();
   }
 
   module.exports = rateLimiterMiddleware;
