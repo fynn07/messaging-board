@@ -26,7 +26,7 @@ const NotesPost = (props) => {
       const message = props.note;
       const date = formatDate();
       const body = {username, message, date};
-      const request = await fetch("https://messaging-board-nine.vercel.app/chat", {
+      const request = await fetch("https://messaging-board-backend.vercel.app/chat", {
         method : "POST",
         headers : { "Content-Type": "application/json"},
         body : JSON.stringify(body)

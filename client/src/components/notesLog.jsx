@@ -12,7 +12,7 @@ const NotesLog = (props) => {
 
   const getNotes = async () => {
     try {
-      const request = await fetch("https://messaging-board-nine.vercel.app/chat");
+      const request = await fetch("https://messaging-board-backend.vercel.app/chat");
       const jsonData = await request.json();
   
       if (JSON.stringify(jsonData) !== JSON.stringify(notes)) {
