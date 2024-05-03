@@ -7,7 +7,7 @@ const PORT = 3200;
 
 
 app.use(cors({
-    origin: ['http://localhost:3200', 'https://messaging-board-nine.vercel.app/'],
+    origin: ['http://localhost:3200', 'https://messaging-board-nine.vercel.app'],
     credentials: true,
     exposedHeaders: ["Authorization"]
 }));
