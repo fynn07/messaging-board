@@ -13,7 +13,7 @@ const opts = {
             next();
         })
         .catch((rateLimiterRes) => {
-            res.status(429).send('Rate Limit Exceeded');
+            next();
         });
   }
 
