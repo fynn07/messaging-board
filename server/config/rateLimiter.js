@@ -8,7 +8,7 @@ const opts = {
   const rateLimiter = new RateLimiterMemory(opts);
 
   function rateLimiterMiddleware(req, res, next){
-    rateLimiter.consume(req.ip, 1) // consume 2 points
+    rateLimiter.consume(req.ip, 1)
         .then((rateLimiterRes) => {
             next();
         })
