@@ -9,7 +9,6 @@ const opts = {
 
   function rateLimiterMiddleware(req, res, next){
     console.log(req.ip)
-    next();
   }
 
   module.exports = rateLimiterMiddleware;
