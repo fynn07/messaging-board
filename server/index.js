@@ -5,12 +5,12 @@ const app = express();
 const server = require('http').createServer(app);
 const PORT = 3200;
 
-var corsOptions = {
-    origin: 'https://messaging-board-nine.vercel.app/',
-    optionsSuccessStatus: 200 
-  }
 
-app.use(cors(corsOptions));
+app.use(cors({
+    origin: ['http://localhost:3200', 'https://messaging-board-nine.vercel.app/'],
+    credentials: true,
+    exposedHeaders: ["Authorization"]
+}));
 app.use(express.json());
 
 app.use('/', require('./routes/mainRoutes'));
