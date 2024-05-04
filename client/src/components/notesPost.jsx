@@ -54,9 +54,9 @@ const NotesPost = (props) => {
         setError('You have exceeded the rate limit. Please try again later.');
         setIsModalOpen(true); // Show the modal
       } else {
-        setError(null);
         props.setNote("");
         props.forceUpdate();
+        setError("null");
       }
 
     } catch (error) {
