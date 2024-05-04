@@ -70,11 +70,11 @@ const NotesPost = (props) => {
   
     return (
         <>
-         <ErrorModal isOpen={isModalOpen} message={error} onClose={handleCloseModal} />
         <form onSubmit={addNote} className='rounded-b-xl pt-6 border-t-2 h-20 shadow-md flex px-12 bg-white items-center'>
           <input type="text" value={props.note} onChange={e => props.setNote(e.target.value)} className='border shadow-lg border-gray-300 rounded-md h-9 mb-6 flex-1 px-4' />
           <button className=' ml-4 p-2 mb-6'><img src={logo} alt="send-button" className='w-6 h-auto' /></button>
         </form>
+        <ErrorModal isOpen={isModalOpen} message={error} onClose={handleCloseModal} />
         </>
     )
 }
