@@ -1,7 +1,6 @@
 const { RateLimiterMemory } = require("rate-limiter-flexible");
 
 const opts = {
-    keyPrefix: 'middleware',
     points: 5,
     duration: 15, 
   };
