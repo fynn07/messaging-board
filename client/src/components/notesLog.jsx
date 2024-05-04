@@ -48,7 +48,7 @@ const NotesLog = (props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       getNotes();
-    }, 2000); 
+    }, 1500); 
   
     return () => clearInterval(interval); 
   }, []); 
