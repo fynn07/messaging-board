@@ -1,6 +1,7 @@
 const { RateLimiterMemory } = require("rate-limiter-flexible");
 
 const opts = {
+    keyPrefix: 'middleware',
     points: 5,
     duration: 15, 
   };
@@ -13,7 +14,8 @@ const opts = {
             next();
         })
         .catch((rateLimiterRes) => {
-            next();
+            res.status(429).send('Too Many Requests');
+
         });
   }
 
