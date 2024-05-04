@@ -1,26 +1,20 @@
-const Redis = require('ioredis');
-const {RateLimiterRedis} = require('rate-limiter-flexible');
+const { RateLimiterMemory } = require("rate-limiter-flexible");
 
-const redisClient = new Redis({ enableOfflineQueue: false });
+const opts = {
+    points: 5,
+    duration: 15, 
+  };
+  
+  const rateLimiter = new RateLimiterMemory(opts);
 
-const rateLimiter = new RateLimiterRedis({
-  storeClient: redisClient,
-  keyPrefix: 'middleware',
-  points: 5, // 10 requests
-  duration: 15, // per 1 second by IP
+  const rateLimiterMiddleware = (req, res, next) => {
+    rateLimiter.consume(req.ip, 1)
+        .then((rateLimiterRes) => {
+            next();
+        })
+        .catch((rateLimiterRes) => {
+            res.status(429).send('Too Many Requests');
+        });
+  }
 
-  // Use this flag for the `redis` package
-  useRedisPackage: true,
-});
-
-const rateLimiterMiddleware = (req, res, next) => {
-  rateLimiter.consume(req.ip)
-    .then(() => {
-      next();
-    })
-    .catch(() => {
-      res.status(429).send('Too Many Requests');
-    });
-};
-
-module.exports = rateLimiterMiddleware;
+  module.exports = rateLimiterMiddleware;
