@@ -19,4 +19,4 @@ const opts = {
         });
   }
 
-  module.exports = rateLimiter;
+  module.exports = rateLimiterMiddleware;
