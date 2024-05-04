@@ -45,13 +45,13 @@ const NotesLog = (props) => {
   }, [notes]);
 
   //real time rendering (500ms)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getNotes();
-    }, 3000); 
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       getNotes();
+//     }, 3000); 
   
-    return () => clearInterval(interval); 
-  }, []); 
+//     return () => clearInterval(interval); 
+//   }, []); 
   
 
     return (
