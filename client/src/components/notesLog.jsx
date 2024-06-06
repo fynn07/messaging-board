@@ -14,9 +14,11 @@ const NotesLog = (props) => {
     try {
       const request = await fetch("https://messaging-board-backend.vercel.app/chat");
       const jsonData = await request.json();
+
+      const sortedNotes = jsonData.sort((a, b) => a.id - b.id);
   
-      if (JSON.stringify(jsonData) !== JSON.stringify(notes)) {
-        setNotes(jsonData);
+      if (JSON.stringify(sortedNotes) !== JSON.stringify(notes)) {
+        setNotes(sortedNotes);
       }
       
       setLoading(false);
